@@ -63,7 +63,7 @@ namespace SecondTrial.View
                 }
                 else
                 {
-                    TxtVisibleData.Text = msg;
+                    TxtVisibleData.Text = "Invaild Card";
                 }
             }
 

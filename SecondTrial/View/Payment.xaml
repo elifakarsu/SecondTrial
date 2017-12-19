@@ -1,0 +1,35 @@
+﻿<Page
+    x:Class="SecondTrial.View.Payment"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SecondTrial.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Button Content="Pay" HorizontalAlignment="Left" Height="145" Margin="65,502,0,0" VerticalAlignment="Top" Width="853" Command="{Binding AddCommand}" Click="Button_Click"/>
+        <TextBox x:Name="TxtCardName" HorizontalAlignment="Left" Height="85" Margin="65,61,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="839" RenderTransformOrigin="0.505,-0.256"/>
+        <Grid HorizontalAlignment="Left" Height="1000" VerticalAlignment="Top" Width="1500">
+            <TextBox x:Name="TxtCardNo" HorizontalAlignment="Left" Height="85" Margin="70,205,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="616" TextChanged="TxtCardNo_TextChanged"/>
+            <TextBox x:Name="Txtcvv" HorizontalAlignment="Left" Height="85" Margin="70,359,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="251" RenderTransformOrigin="0.5,1.809"/>
+            <TextBox x:Name="TxtYear" HorizontalAlignment="Left" Height="85" Margin="658,359,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="251" RenderTransformOrigin="0.5,1.809"/>
+            <TextBox x:Name="TxtMonth" HorizontalAlignment="Left" Height="85" Margin="380,359,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="251" RenderTransformOrigin="0.5,1.809"/>
+            <TextBlock HorizontalAlignment="Left" Margin="70,180,0,0" TextWrapping="Wrap" Text="Insert Card No." VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Left" Margin="70,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="-0.532,0.588">
+                <Run Text="Name"/>
+                <LineBreak/>
+                <Run/>
+            </TextBlock>
+            <TextBlock HorizontalAlignment="Left" Margin="70,334,0,0" TextWrapping="Wrap" Text="CVV" VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Left" Margin="380,334,0,0" TextWrapping="Wrap" Text="Month" VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Left" Margin="658,334,0,0" TextWrapping="Wrap" Text="Year" VerticalAlignment="Top" RenderTransformOrigin="0.565,1.413" />
+            <StackPanel HorizontalAlignment="Left" Height="116" Margin="65,174,0,0" VerticalAlignment="Top" Width="844">
+                <Image Height="130"/>
+            </StackPanel>
+            <Image x:Name="Image" HorizontalAlignment="Left" Height="85" Margin="691,205,0,0" VerticalAlignment="Top" Width="218"  />
+            <TextBlock x:Name="TxtVisibleData" HorizontalAlignment="Left" Margin="245,724,0,0" TextWrapping="Wrap" Text=""  VerticalAlignment="Top" Height="28" Width="411" Foreground="#FFCD3C3C"/>
+
+        </Grid>
+     </Grid>
+</Page>

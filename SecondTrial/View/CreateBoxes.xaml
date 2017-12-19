@@ -1,0 +1,32 @@
+﻿<Page
+    x:Class="SecondTrial.View.CreateBoxes"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SecondTrial.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <CheckBox Command ="{Binding ShowThisMonthsOrderCommand,Mode =TwoWay}" IsChecked="{Binding Check,Mode=TwoWay}"  Content="See this months orders" HorizontalAlignment="Left" Height="45" Margin="25,100,0,0" VerticalAlignment="Top" Width="140"/>
+        <CheckBox Command ="{Binding ShowNextMonthsOrderCommand,Mode =TwoWay}" IsChecked="{Binding Check2,Mode=TwoWay}" Content="See next months orders" HorizontalAlignment="Left" Height="45" Margin="190,100,0,0" VerticalAlignment="Top" Width="160"/>
+        <TextBlock HorizontalAlignment="Left" Height="70" Margin="360,90,0,0" Text="Choose specific month to see orders" TextWrapping="Wrap" VerticalAlignment="Top" Width="105"/>
+        <ListBox ItemsSource ="{Binding MonthsList}" SelectedItem ="{Binding SelectedMonth,Mode = TwoWay}"  HorizontalAlignment="Left" Height="40" Margin="480,100,0,0" VerticalAlignment="Top" Width="65" 
+                 />
+        <ListView ItemsSource ="{Binding ChosenOrders,Mode =TwoWay}"  HorizontalAlignment="Left" Height="340" Margin="55,180,0,0" VerticalAlignment="Top" Width="515">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation ="Horizontal">
+                        <TextBlock Text="{Binding OrderNumber}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" FontWeight="Bold"></TextBlock>
+                        <TextBlock Text="{Binding Customer.Name}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" FontWeight="Bold"></TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+        </ListView>
+        <Button Content="Create boxes in the list" Command ="{Binding CreateAllBoxesCommand}"  HorizontalAlignment="Left" Height="45" Margin="55,510,0,0" VerticalAlignment="Top" Width="200"/>
+        <Button Content="Back to login" Command ="{Binding GoBackCommand}"  HorizontalAlignment="Left" Height="45" Margin="270,510,0,0" VerticalAlignment="Top" Width="155"/>
+
+
+    </Grid>
+</Page>

@@ -1,0 +1,60 @@
+﻿<Page
+    x:Class="SecondTrial.View.ShoppingPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SecondTrial.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.25*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="1.5*"/>
+        </Grid.ColumnDefinitions>
+
+
+        <Image Source="../Assets/back.jpg" Grid.ColumnSpan="4" Grid.RowSpan="4" FlowDirection="RightToLeft"
+               ManipulationMode="Scale" Stretch="UniformToFill"/>
+        <Rectangle  Grid.Column="0" Grid.ColumnSpan="3"  Grid.Row="2"  Fill="#b3ffffff" ManipulationMode="Scale"/>
+
+
+
+        <TextBlock Grid.Row ="2" Grid.Column="0"  HorizontalAlignment="Center"  Text="Your Items:"  TextWrapping="Wrap" VerticalAlignment="Top" FontSize="60" FontFamily="Modern Serif" TextAlignment="Center"/>
+
+        <ListView Grid.Row="2" Grid.Column="0"   ItemsSource ="{Binding MyOrders,Mode =TwoWay}" SelectedItem ="{Binding SelectedOrder,Mode =TwoWay}"  HorizontalAlignment="Center" VerticalAlignment="Center"  FontFamily="Modern Serif">
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation ="Horizontal">
+                        <TextBlock Text="{Binding MyInformationAboutBoxes.Name}" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"></TextBlock>
+                        <TextBlock Text="x" Margin="10,0,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"></TextBlock>
+                        <TextBlock Text="{Binding NumberofSubscriptionMonths}" Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"></TextBlock>
+                        <TextBlock Text="-" Margin="10,0,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"></TextBlock>
+                        <TextBlock Text="{Binding MyInformationAboutBoxes.Price}" Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"></TextBlock>
+
+                        <TextBlock Text="€" Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"></TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <ListView SelectedIndex ="{Binding SelectedIndex, Mode =TwoWay}" Grid.Row="2" Grid.Column="1"  ItemsSource ="{Binding TextList, Mode =TwoWay}" FontWeight="Bold"  HorizontalAlignment="Left" VerticalAlignment="Center" />
+
+        
+        <TextBox Header="Total Price"  Grid.Row="2" Grid.Column="1" FontWeight="Bold"  Text="{Binding TotalPrice,Mode =TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Center"  FontFamily="Modern Serif"/>
+        <Button  Grid.Row="2" Grid.Column="1" Content="Buy" Command ="{Binding BuyCommand}"  HorizontalAlignment="Center"  VerticalAlignment="Bottom" FontFamily="Modern Serif" FontWeight ="Bold" />
+
+
+
+
+
+    </Grid>
+</Page>

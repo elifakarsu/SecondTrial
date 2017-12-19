@@ -1,0 +1,103 @@
+﻿<Page
+    x:Class="SecondTrial.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    
+    mc:Ignorable="d" Height="3003.222">
+
+    <ScrollViewer x:Name="myScrollViewer" Margin="0,0,0,1500">
+        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Height="3000" VerticalAlignment="Center" HorizontalAlignment="Center" CanDrag="True">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="200"/>
+                <RowDefinition Height="80" />
+                <RowDefinition Height="720"/>
+                <RowDefinition Height="500"/>
+                <RowDefinition Height="500"/>
+
+            </Grid.RowDefinitions>
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
+            <StackPanel Grid.Row="0" Grid.RowSpan="4"  Grid.Column="0" Grid.ColumnSpan="2"  >
+                <Image Stretch="Fill"  Source="../Assets/gift-made-surprise-loop-45223 (1).jpeg" HorizontalAlignment="Center" VerticalAlignment="Center"></Image>
+            </StackPanel>
+            <RichTextBlock Grid.Row="2" Grid.Column="0" TextWrapping="Wrap"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="72,170,72,164" TextAlignment="Center" >
+                <Paragraph FontFamily="Modern Serif">
+                    <Run Text="From Gaming to Beauty and Health dive on in and pamper yourself!" FontSize="40" Foreground="#FF040404"  FontFamily="Modern Serif" FontStyle="Normal" />
+                </Paragraph>
+            </RichTextBlock>
+
+
+
+            <RelativePanel Grid.ColumnSpan="2">
+                <Image Source="../Assets/back.jpg" Stretch="Fill" Height="200" VerticalAlignment="Top" Margin="0,0,-10,0"/>
+                <TextBlock Height="92" Text="PANDORA'S BOX"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="1480" Margin="-64,32,-1416,-77" FontSize="72" FontFamily="Modern Serif" Foreground="AliceBlue" TextAlignment="Center"/>
+                
+            </RelativePanel>
+           
+            <RelativePanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Center" RequestedTheme="Light" Margin="0,24" >
+                <Image Source="../Assets/logo.png" Margin="192,0,-192,0" />
+                <Button Content="About Us" HorizontalAlignment="Center" Height="42" VerticalAlignment="Center" Width="172" Margin="550,0,-657,-10" Background="#33E9F4F5" FontFamily="Century Gothic" FontSize="20"/>
+                <Button Content="Contact Us" HorizontalAlignment="Center" Height="42" VerticalAlignment="Center" Width="172" Margin="681,-1,-788,-9" Background="#33E9F4F5" FontSize="20"/>
+                <Button Content="Brands" HorizontalAlignment="Right" Height="42" VerticalAlignment="Center" Width="172" Margin="0,0,-607,-10" Background="#33E9F4F5" FontFamily="Century Gothic" FontSize="20"/>
+
+                <Button Content="Shop now" HorizontalAlignment="Right" Height="42" VerticalAlignment="Center" Width="172" Margin="0,0,-469,-10" Background="#33E9F4F5" FontFamily="Century Gothic" FontSize="20" Click="Button_Click"/>
+                <Button HorizontalAlignment="Left" Height="42" VerticalAlignment="Top" Width="48" Margin="1244,0,-1292,-42" Background="{x:Null}" >
+                    <Image Source="../Assets/25564534_1242781325823041_5839747_n.png "/> 
+                </Button>
+                <Button HorizontalAlignment="Left" Height="42" VerticalAlignment="Top" Width="48" Margin="1192,0,-1240,-42" Click="Button_Click_1" Background="{x:Null}" >
+                    <Image Source="../Assets/25564782_1242782342489606_1058898461_n.png"></Image>
+                </Button>
+                <Button HorizontalAlignment="Left" Height="42" VerticalAlignment="Top" Width="48" Margin="1297,0,-1341,-42" Background="{x:Null}" >
+                    <Image Source="../Assets/25577047_1242781315823042_1634485136_o.png" />
+                </Button>
+
+            </RelativePanel>
+           
+
+            <Button Content="SUBSCRIBE NOW" Grid.Row="2" Grid.Column="0"  FontSize="24" Margin="261,460,284,0" VerticalAlignment="Top" HorizontalAlignment="Center" FontFamily="Modern Serif"/>
+
+            <!--this button; bind with about us page-->
+
+            <!--<RichTextBlock Grid.Row="4" Grid.Column="0">
+                <Paragraph>
+                    <Run Text="Step 1-Choose a monthly subscription or from one of 3,6 months plans.
+                                      
+                                                            Step 2-Dispatch day! Your box is delivered diretly to your door every month.
+                                                                                          Step 3-Discover the latest trends and tips!" FontFamily="Century Gothic" FontSize="24"/>
+                </Paragraph>
+            </RichTextBlock>-->
+            
+            
+            
+            
+
+            <Image Source="../Assets/howitworks...png" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"  VerticalAlignment="Top"></Image>
+            <StackPanel Grid.Row="3" Grid.Column="0"  Grid.ColumnSpan="2"  Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center" >
+                <TextBlock FontSize="18"  FontFamily="Modern Serif"  Text="Step 1-Choose a monthly subscription" Height="30" Width="416"></TextBlock>
+
+                <TextBlock FontSize="18" FontFamily="Modern Serif" Text="Step 2-Your box is delivered diretly to your door every month." Width="636" ></TextBlock>
+                <TextBlock FontSize="18" FontFamily="Modern Serif" Text="Step 3-Discover the latest trends and tips!" Width="420"></TextBlock>
+            </StackPanel>
+            
+
+
+
+            <!--Select your category, we choose ten products pack them into our boxes and deliver them directly to your doorstep!"-->
+
+            <!--<RelativePanel VerticalAlignment="Bottom" HorizontalAlignment="Center" >
+            <FlipView MaxWidth="400" Height="270">
+                <Image Source="Assets/health.jpg" Margin="8,0,-8,0"/>
+                <Image Source="Assets/geek.jpg"/>
+                <Image Source="Assets/make-up.jpg"/>
+                <Image Source="Assets/eras.jpg"/>
+            </FlipView>
+        </RelativePanel>-->
+        </Grid>
+    </ScrollViewer>
+</Page>

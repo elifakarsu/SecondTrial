@@ -37,16 +37,17 @@ namespace SecondTrial.Model
         public Order()
         {
             OrderDates = new ObservableCollection<DateTimeOffset>();
+            
         }
 
         public Order(ObservableCollection<Box> boxes, Customer customer, string orderStatus,string orderNumber, ObservableCollection<DateTimeOffset> orderDates)
         {
+            //OrderDates = new ObservableCollection<DateTimeOffset>();
             _boxes = boxes;
             _customer = customer;
             _orderStatus = orderStatus;
             _orderNumber = orderNumber;
             _orderDates = orderDates;
-           
         }
 
     }

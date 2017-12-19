@@ -8,7 +8,7 @@ using SecondTrial.ViewModel;
 
 namespace SecondTrial.Model
 {
-   public class Customer :NotifyChangedPropertyClass
+   public class Customer : NotifyChangedPropertyClass
     {
         private string _name;
         private string _country;
@@ -73,12 +73,13 @@ namespace SecondTrial.Model
             _address = address;
             _phoneNumber = phoneNumber;
             _eMail = eMail;
+            PaymentDetails = new PaymentDetails();
             _paymentDetails = paymentDetails;
         }
 
         public Customer()
         {
-
+            PaymentDetails = new PaymentDetails();
         }
 
     }

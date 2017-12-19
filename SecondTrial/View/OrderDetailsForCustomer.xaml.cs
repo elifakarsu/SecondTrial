@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using SecondTrial.ViewModel;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -22,9 +23,13 @@ namespace SecondTrial.View
     /// </summary>
     public sealed partial class OrderDetailsForCustomer : Page
     {
+
+        private OrderVm _pageVm;
         public OrderDetailsForCustomer()
         {
             this.InitializeComponent();
+            _pageVm = new OrderVm();
+            DataContext = _pageVm;
         }
     }
 }

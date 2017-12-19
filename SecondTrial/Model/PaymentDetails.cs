@@ -34,7 +34,7 @@ namespace SecondTrial.Model
 
         public PaymentDetails()
         {
-            _singletonOrder = SingletonOrder.GetInstance();
+            
            
         }
 

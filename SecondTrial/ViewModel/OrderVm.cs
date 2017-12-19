@@ -15,7 +15,7 @@ namespace SecondTrial.ViewModel
     class OrderVm : NotifyChangedPropertyClass
     {
         
-        private ObservableCollection<Box> _myOrders;
+        private ObservableCollection<Box> _myNewOrders;
 
         private ObservableCollection<Order> _myExistingOrders;
 
@@ -37,17 +37,17 @@ namespace SecondTrial.ViewModel
 
         private DateTimeOffset _currentTime;
 
-        public RelayCommand BuyCommand { get; set; }
+        public RelayCommand CheckOutCommand { get; set; }
 
         public RelayCommand ContinueCommand { get; set; }
 
-        public ObservableCollection<Box> MyOrders
+        public ObservableCollection<Box> MyNewOrders
         {
-            get { return _myOrders; }
+            get { return _myNewOrders; }
             set
             {
-                _myOrders = value;
-                OnPropertyChanged(nameof(MyOrders));
+                _myNewOrders = value;
+                OnPropertyChanged(nameof(MyNewOrders));
             }
         }
         
@@ -68,7 +68,7 @@ namespace SecondTrial.ViewModel
             {
                 _selectedIndex = value;
                 OnPropertyChanged(nameof(SelectedIndex));
-                MyOrders.RemoveAt(SelectedIndex);
+                MyNewOrders.RemoveAt(SelectedIndex);
                 TextList.RemoveAt(SelectedIndex);
                }
         }
@@ -121,9 +121,9 @@ namespace SecondTrial.ViewModel
 
             _singletonOrder = SingletonOrder.GetInstance();
 
-            MyOrders = new ObservableCollection<Box>();
+            MyNewOrders = new ObservableCollection<Box>();
 
-            MyOrders = _singletonOrder.GetBox();
+            MyNewOrders = _singletonOrder.GetBox();
 
             Customer = _singletonOrder.GetCustomer();
             
@@ -137,7 +137,7 @@ namespace SecondTrial.ViewModel
 
             ReadOrders();
 
-            BuyCommand = new RelayCommand(GoToNextPage);
+            CheckOutCommand = new RelayCommand(GoToCustomerPage);
 
             ContinueCommand = new RelayCommand(Continue);
         }
@@ -145,7 +145,7 @@ namespace SecondTrial.ViewModel
 
         public void AddTextList()
         {
-            foreach (var box in MyOrders)
+            foreach (var box in MyNewOrders)
             {
                 TextList.Add("Delete item");
 
@@ -156,29 +156,23 @@ namespace SecondTrial.ViewModel
         {
             double newPrice = 0;
 
-            foreach (var box in MyOrders)
+            foreach (var box in MyNewOrders)
             {
                 if (box.CheckSubscription == false)
                 {
                     TotalPrice = TotalPrice + Int32.Parse(box.MyInformationAboutBoxes.Price);
-                    //box.MyInformationAboutBoxes.Price = box.MyInformationAboutBoxes.Price + "€";
-                    
                 }
                 else
                 {
                     if (box.NumberofSubscriptionMonths == 3)
                     {
-                        //box.MyInformationAboutBoxes.Name = box.MyInformationAboutBoxes.Name + " x 3 months";
                         newPrice = Convert.ToDouble(box.MyInformationAboutBoxes.Price) * 3;
-                        //box.MyInformationAboutBoxes.Price = Convert.ToString(newPrice) + "€";
                         box.MyInformationAboutBoxes.Price = Convert.ToString(newPrice);
                         TotalPrice = TotalPrice + newPrice;
                     }
                     else if (box.NumberofSubscriptionMonths == 6)
                     {
-                        //box.MyInformationAboutBoxes.Name = box.MyInformationAboutBoxes.Name + " x 6 months";
                         newPrice = Convert.ToDouble(box.MyInformationAboutBoxes.Price) * 6;
-                        //box.MyInformationAboutBoxes.Price = Convert.ToString(newPrice) + "€";
                         box.MyInformationAboutBoxes.Price = Convert.ToString(newPrice) ;
                         TotalPrice = TotalPrice + newPrice;
                     }
@@ -209,7 +203,7 @@ namespace SecondTrial.ViewModel
            CurrentTime = DateTimeOffset.Now;
 
             NewOrder.Customer = Customer;
-            NewOrder.Boxes = MyOrders;
+            NewOrder.Boxes = MyNewOrders;
             NewOrder.OrderStatus = "Waiting for shipping";
             NewOrder.OrderNumber = Convert.ToString((MyExistingOrders.Count)+1);
 
@@ -243,17 +237,16 @@ namespace SecondTrial.ViewModel
             MyExistingOrders.Add(NewOrder);
             
         }
-        public void GoToNextPage()
+
+        public void GoToCustomerPage()
         {
             Type type = typeof(CustomerDetails);
             _frameNavigate.ActivateFrameNavigation(type);
-
         }
 
         public void Continue()
         {
-            Buy();
-            SaveNewOrder();
+            _singletonOrder.SetCustomerToOrder(Customer);
             Type type = typeof(Payment);
             _frameNavigate.ActivateFrameNavigation(type);
         }

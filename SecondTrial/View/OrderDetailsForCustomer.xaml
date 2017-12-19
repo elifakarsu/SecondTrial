@@ -8,6 +8,14 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <TextBlock HorizontalAlignment="Left" Height="75" Margin="105,105,0,0" Text="Order Details: " TextWrapping="Wrap" VerticalAlignment="Top" Width="360" FontSize ="40"/>
+        <StackPanel>
+            <TextBlock Text="{Binding _order.Customer.PaymentDetails.CardName}"></TextBlock>
+            <TextBlock Text=""></TextBlock>
+            <TextBlock Text=""></TextBlock>
+            <TextBlock Text=""></TextBlock>
+        </StackPanel>
+
 
     </Grid>
 </Page>

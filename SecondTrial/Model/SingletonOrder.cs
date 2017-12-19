@@ -22,7 +22,7 @@ namespace SecondTrial.Model
            Order = new Order();
            Customer = new Customer();
            OrderList = new ObservableCollection<Box>();
-           //PaymentDetails = new PaymentDetails();
+           PaymentDetails = new PaymentDetails();
         }
 
         public static SingletonOrder GetInstance()
@@ -45,15 +45,21 @@ namespace SecondTrial.Model
            
         }
 
+        public Order GetOrder()
+        {
+            return Order;
+
+        }
+        
         public void SetCustomerToOrder(Customer customer)
         {
             Order.Customer = customer;
         }
 
-        //public void SetPaymentToCustomer(PaymentDetails paymentDetails )
-        //{
-        //    Order.Customer.PaymentDetails = paymentDetails;
-        //}
+        public void SetPaymentToCustomer(PaymentDetails paymentDetails)
+        {
+            Order.Customer.PaymentDetails = paymentDetails;
+        }
 
         public Customer GetCustomer()
         {

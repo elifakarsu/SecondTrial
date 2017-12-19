@@ -23,7 +23,7 @@
 
         <Image Source="../Assets/back.jpg" Grid.ColumnSpan="4" Grid.RowSpan="4" FlowDirection="RightToLeft"
                ManipulationMode="Scale" Stretch="UniformToFill"/>
-        <Rectangle Grid.RowSpan="4" Grid.Column="1" Grid.Row="0"  Fill="#b3ffffff" ManipulationMode="Scale"/>
+        <Rectangle Grid.RowSpan="4"  Grid.Column="1" Grid.Row="0"  Fill="#b3ffffff" ManipulationMode="Scale"/>
 
         <Image Grid.Row="0" Source="../Assets/logo.png" Grid.Column="1" HorizontalAlignment="Center" />
         <ListView Grid.Row="2" Grid.Column="1" ItemsSource ="{Binding AllOfMyBoxes,Mode =TwoWay}" SelectedItem="{Binding SelectedBox,Mode =TwoWay}"   HorizontalAlignment="Stretch"   VerticalAlignment="Top" >

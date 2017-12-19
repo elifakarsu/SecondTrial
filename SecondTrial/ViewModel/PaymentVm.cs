@@ -18,8 +18,7 @@ namespace SecondTrial.ViewModel
         {
 
         }
-
-
+        
         public string CardNumber
         {
             get => PaymentDetails.CardNumber;

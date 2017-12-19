@@ -10,11 +10,12 @@ namespace SecondTrial.ViewModel
     class OrderDetailsVm
     {
         private SingletonOrder _singleton;
+        private Order _order;
 
         public OrderDetailsVm()
         {
             _singleton = SingletonOrder.GetInstance();
-            
+            _order  = _singleton.GetOrder();
         }
 
 

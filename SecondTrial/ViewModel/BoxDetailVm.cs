@@ -149,7 +149,9 @@ namespace SecondTrial.ViewModel
                 {
                     SelectedBox.CheckSubscription = false;
                     SelectedBox.NumberofSubscriptionMonths = 1;
+
                     OrderList.Add(SelectedBox);
+
                     ShowMessageBox();
                 }
                 else if (SelectedPlan == PlanList.ElementAt(1))
@@ -157,6 +159,7 @@ namespace SecondTrial.ViewModel
                     SelectedBox.CheckSubscription = true;
                     SelectedBox.NumberofSubscriptionMonths = 3;
                     SelectedBox.MyInformationAboutBoxes.Price = Convert.ToString(CalculateNewPrice());
+
                     OrderList.Add(SelectedBox);
 
                     ShowMessageBox();
@@ -237,10 +240,7 @@ namespace SecondTrial.ViewModel
             _frameNavigate.ActivateFrameNavigation(type);
 
         }
-
         
-
-
         //For control customer has created a order before or not
         public void CheckOrderList()
         {

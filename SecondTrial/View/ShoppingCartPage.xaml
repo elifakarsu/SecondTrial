@@ -30,7 +30,7 @@
 
         <TextBlock Grid.Row ="2" Grid.Column="0"  HorizontalAlignment="Center"  Text="Your Items:"  TextWrapping="Wrap" VerticalAlignment="Top" FontSize="60" FontFamily="Modern Serif" TextAlignment="Center"/>
 
-        <ListView Grid.Row="2" Grid.Column="0"   ItemsSource ="{Binding MyOrders,Mode =TwoWay}" SelectedItem ="{Binding SelectedOrder,Mode =TwoWay}"  HorizontalAlignment="Center" VerticalAlignment="Center"  FontFamily="Modern Serif">
+        <ListView Grid.Row="2" Grid.Column="0"   ItemsSource ="{Binding MyNewOrders,Mode =TwoWay}" SelectedItem ="{Binding SelectedOrder,Mode =TwoWay}"  HorizontalAlignment="Center" VerticalAlignment="Center"  FontFamily="Modern Serif">
 
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -49,8 +49,8 @@
         <ListView SelectedIndex ="{Binding SelectedIndex, Mode =TwoWay}" Grid.Row="2" Grid.Column="1"  ItemsSource ="{Binding TextList, Mode =TwoWay}" FontWeight="Bold"  HorizontalAlignment="Left" VerticalAlignment="Center" />
 
         
-        <TextBox Header="Total Price"  Grid.Row="2" Grid.Column="1" FontWeight="Bold"  Text="{Binding TotalPrice,Mode =TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Center"  FontFamily="Modern Serif"/>
-        <Button  Grid.Row="2" Grid.Column="1" Content="Buy" Command ="{Binding BuyCommand}"  HorizontalAlignment="Center"  VerticalAlignment="Bottom" FontFamily="Modern Serif" FontWeight ="Bold" />
+        <TextBlock Grid.Row="2" Grid.Column="1" FontWeight="Bold"  Text="{Binding TotalPrice,Mode =TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Center"  FontFamily="Modern Serif"/>
+        <Button  Grid.Row="2" Grid.Column="1" Content="Check Out" Command ="{Binding CheckOutCommand}"  HorizontalAlignment="Center"  VerticalAlignment="Bottom" FontFamily="Modern Serif" FontWeight ="Bold" Margin="136,0,136,74" />
 
 
 

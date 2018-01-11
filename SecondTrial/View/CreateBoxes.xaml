@@ -8,7 +8,7 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <CheckBox Command ="{Binding ShowThisMonthsOrderCommand,Mode =TwoWay}" IsChecked="{Binding Check,Mode=TwoWay}"  Content="See this months orders" HorizontalAlignment="Left" Height="45" Margin="25,100,0,0" VerticalAlignment="Top" Width="140"/>
+        <!--<CheckBox Command ="{Binding ShowThisMonthsOrderCommand,Mode =TwoWay}" IsChecked="{Binding Check,Mode=TwoWay}"  Content="See this months orders" HorizontalAlignment="Left" Height="45" Margin="25,100,0,0" VerticalAlignment="Top" Width="140"/>
         <CheckBox Command ="{Binding ShowNextMonthsOrderCommand,Mode =TwoWay}" IsChecked="{Binding Check2,Mode=TwoWay}" Content="See next months orders" HorizontalAlignment="Left" Height="45" Margin="190,100,0,0" VerticalAlignment="Top" Width="160"/>
         <TextBlock HorizontalAlignment="Left" Height="70" Margin="360,90,0,0" Text="Choose specific month to see orders" TextWrapping="Wrap" VerticalAlignment="Top" Width="105"/>
         <ListBox ItemsSource ="{Binding MonthsList}" SelectedItem ="{Binding SelectedMonth,Mode = TwoWay}"  HorizontalAlignment="Left" Height="40" Margin="480,100,0,0" VerticalAlignment="Top" Width="65" 
@@ -25,8 +25,62 @@
 
         </ListView>
         <Button Content="Create boxes in the list" Command ="{Binding CreateAllBoxesCommand}"  HorizontalAlignment="Left" Height="45" Margin="55,510,0,0" VerticalAlignment="Top" Width="200"/>
-        <Button Content="Back to login" Command ="{Binding GoBackCommand}"  HorizontalAlignment="Left" Height="45" Margin="270,510,0,0" VerticalAlignment="Top" Width="155"/>
+        <Button Content="Back to login" Command ="{Binding GoBackCommand}"  HorizontalAlignment="Left" Height="45" Margin="270,510,0,0" VerticalAlignment="Top" Width="155"/>-->
 
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.2*"/>
+
+            <RowDefinition Height="*"/>
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="0.25*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="0.25*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Image Source="../Assets/back.jpg" Grid.ColumnSpan="5"  Grid.RowSpan="12" FlowDirection="RightToLeft"
+               ManipulationMode="Scale" Stretch="UniformToFill"/>
+        <Rectangle Grid.Row="1" Grid.RowSpan="10" Grid.Column="0" Grid.ColumnSpan ="5"  Fill="#b3ffffff" ManipulationMode="Scale"/>
+
+        <StackPanel Grid.Row="1" Grid.Column="2" Grid.RowSpan="2" >
+            <CheckBox Command ="{Binding ShowThisMonthsOrderCommand,Mode =TwoWay}" IsChecked="{Binding Check,Mode=TwoWay}"  Content="See this months orders" HorizontalAlignment="Center" />
+            <CheckBox Command ="{Binding ShowNextMonthsOrderCommand,Mode =TwoWay}" IsChecked="{Binding Check2,Mode=TwoWay}" Content="See next months orders" HorizontalAlignment="Center" />
+            <StackPanel Orientation="Vertical">
+                <TextBlock HorizontalAlignment="Center"  Text="Choose specific month to see orders" TextWrapping="Wrap" VerticalAlignment="Top" />
+                <ListBox ItemsSource ="{Binding MonthsList}" SelectedItem ="{Binding SelectedMonth,Mode = TwoWay}"  HorizontalAlignment="Left"  VerticalAlignment="Top" Height="74" Margin="209,0,0,0" Width="235"  
+                />
+            </StackPanel>
+
+        </StackPanel>
+
+        <ListView ItemsSource ="{Binding ChosenOrders,Mode =TwoWay}"  HorizontalAlignment="Left"  VerticalAlignment="Top" Grid.ColumnSpan="5" Height="275" Margin="540,310,-940,-585" Grid.RowSpan="12" Width="400" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation ="Horizontal">
+                        <TextBlock Text="{Binding OrderNumber}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" FontWeight="Bold"></TextBlock>
+                        <TextBlock Text="{Binding Customer.Name}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" FontWeight="Bold"></TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+        </ListView>
+
+        <Button  Content="Create boxes in the list" Command ="{Binding CreateAllBoxesCommand,Mode =TwoWay}"  HorizontalAlignment="Center" Grid.Row="7" Grid.Column="2"   VerticalAlignment="Top"   />
+        <Button Content="Go Back" Command ="{Binding GoBackCommand}"  HorizontalAlignment="Center"  VerticalAlignment="Top" Grid.Row="8" Grid.Column="2"  />
+       
 
     </Grid>
 </Page>

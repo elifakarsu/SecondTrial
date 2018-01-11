@@ -32,19 +32,19 @@
 
         <Image Grid.Row="0" Source="../Assets/logo.png" Grid.Column="1" HorizontalAlignment="Center" />
 
-        <TextBox Header="Name:"  Grid.Row="2" Grid.Column="1"  Text="{Binding Customer.Name ,Mode =TwoWay}" FontSize="16" FontFamily="Modern Serif" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <TextBox Header="Name:"  Grid.Row="2" Grid.Column="1"  Text="{Binding Customer.Name ,Mode =TwoWay}" FontSize="16" FontFamily="Modern Serif" HorizontalAlignment="Center" VerticalAlignment="Center" Width="90" Height="50" />
 
-        <TextBox Header="Country"  Grid.Row="3" Grid.Column="1"  Text="{Binding Customer.Country,Mode =TwoWay}" FontSize="16" FontFamily="Modern Serif" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <TextBox Header="Country"  Grid.Row="3" Grid.Column="1"  Text="{Binding Customer.Country,Mode =TwoWay}" FontSize="16" FontFamily="Modern Serif" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="90" Height="60" />
 
-        <TextBox Header="City" Grid.Row="4" Grid.Column="1"  Text="{Binding Customer.City,Mode =TwoWay}" FontSize="16" FontFamily="Modern Serif" HorizontalAlignment="Center" VerticalAlignment="Top" />
+        <TextBox Header="City" Grid.Row="4" Grid.Column="1"  Text="{Binding Customer.City,Mode =TwoWay}" FontSize="16" FontFamily="Modern Serif" HorizontalAlignment="Center" VerticalAlignment="Center" Width="90" Height="50" />
 
-        <TextBox Header="Address"  Grid.Row="5" Grid.Column="1"  Text="{Binding Customer.Address,Mode =TwoWay}" FontSize="16" FontFamily="Modern Serif" HorizontalAlignment="Center" VerticalAlignment="Top" />
+        <TextBox Header="Address"  Grid.Row="5" Grid.Column="1"  Text="{Binding Customer.Address,Mode =TwoWay}" FontSize="16" FontFamily="Modern Serif" HorizontalAlignment="Center" VerticalAlignment="Center" Width="90" Height="50" />
 
-        <TextBox Header="Phone Number"  Grid.Row="6" Grid.Column="1"  Text="{Binding Customer.PhoneNumber,Mode =TwoWay}" FontSize="16" FontFamily="Modern Serif" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="363,4,351,0"  />
+        <TextBox Header="Phone Number"  Grid.Row="6" Grid.Column="1"  Text="{Binding Customer.PhoneNumber,Mode =TwoWay}" FontSize="16" FontFamily="Modern Serif" HorizontalAlignment="Center" VerticalAlignment="Center" Width="90" Height="50"   />
 
-        <TextBox Header="E-Mail"  Grid.Row="7" Grid.Column="1"  Text="{Binding Customer.EMail,Mode =TwoWay}" FontSize="16" FontFamily="Modern Serif" HorizontalAlignment="Center" VerticalAlignment="Top" />
+        <TextBox Header="E-Mail"  Grid.Row="7" Grid.Column="1"  Text="{Binding Customer.EMail,Mode =TwoWay}" FontSize="16" FontFamily="Modern Serif" HorizontalAlignment="Center" VerticalAlignment="Top" Width="90" Height="50" />
 
-        <Button Grid.Column="1" Grid.Row="7" Content="Continue" Command="{Binding ContinueCommand }" FontSize="28" FontFamily="MS Office Symbol Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="100,0,100,100"  />
+        <Button Grid.Column="1" Grid.Row="7" Content="Continue" Command="{Binding ContinueCommand }" FontSize="28" FontFamily="MS Office Symbol Bold" HorizontalAlignment="Center" VerticalAlignment="Center"  />
 
     </Grid>
 

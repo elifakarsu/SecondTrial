@@ -125,17 +125,26 @@
     <Compile Include="ViewModel\OrderVm.cs" />
     <Compile Include="ViewModel\PaymentVm.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
+    <Compile Include="View\AboutUs.xaml.cs">
+      <DependentUpon>AboutUs.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\AdminView.xaml.cs">
       <DependentUpon>AdminView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\BoxDetails.xaml.cs">
       <DependentUpon>BoxDetails.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Brands.xaml.cs">
+      <DependentUpon>Brands.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\CategoryPage.xaml.cs">
       <DependentUpon>CategoryPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\CheckInventory.xaml.cs">
       <DependentUpon>CheckInventory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ContactUs.xaml.cs">
+      <DependentUpon>ContactUs.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\CreateBoxes.xaml.cs">
       <DependentUpon>CreateBoxes.xaml</DependentUpon>
@@ -183,24 +192,33 @@
     <Content Include="Assets\25564534_1242781325823041_5839747_n.png" />
     <Content Include="Assets\25564782_1242782342489606_1058898461_n.png" />
     <Content Include="Assets\25577047_1242781315823042_1634485136_o.png" />
+    <Content Include="Assets\25593135_1363977627044526_2119110275_o.jpg" />
+    <Content Include="Assets\4.jpg" />
     <Content Include="Assets\american express.jpg" />
     <Content Include="Assets\animation.gif" />
+    <Content Include="Assets\arrow_left-512.png" />
     <Content Include="Assets\back.jpg" />
     <Content Include="Assets\back.png" />
+    <Content Include="Assets\BackButton.png" />
     <Content Include="Assets\beauty.png" />
     <Content Include="Assets\box1.jpg" />
     <Content Include="Assets\box2.jpg" />
     <Content Include="Assets\box3.png" />
+    <Content Include="Assets\choose.png" />
+    <Content Include="Assets\delivery.png" />
     <Content Include="Assets\Diners Club - international.jpg" />
     <Content Include="Assets\discover.jpg" />
+    <Content Include="Assets\dribbble_gift.gif" />
     <Content Include="Assets\elif.jpg" />
     <Content Include="Assets\ERA%27S.png" />
+    <Content Include="Assets\era.png" />
     <Content Include="Assets\face.jpg" />
     <Content Include="Assets\GEEK.png" />
     <Content Include="Assets\gift-box-loop.gif" />
     <Content Include="Assets\gift-made-surprise-loop-45223 %281%29.jpeg" />
     <Content Include="Assets\health.png" />
     <Content Include="Assets\howitworks...png" />
+    <Content Include="Assets\imageedit_2_9183103960.jpg" />
     <Content Include="Assets\insta.jpg" />
     <Content Include="Assets\Instapayment.jpg" />
     <Content Include="Assets\JCB.jpg" />
@@ -212,6 +230,7 @@
     <Content Include="Assets\MasterCard.jpg" />
     <Content Include="Assets\milena.jpg" />
     <Content Include="Assets\monique.jpg" />
+    <Content Include="Assets\order.png" />
     <Content Include="Assets\personal-256.png" />
     <Content Include="Assets\pexels-photo-426905.jpeg" />
     <Content Include="Assets\super.gif" />
@@ -236,6 +255,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\AboutUs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\AdminView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -244,11 +267,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Brands.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\CategoryPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\CheckInventory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ContactUs.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

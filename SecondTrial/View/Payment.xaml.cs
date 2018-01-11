@@ -83,9 +83,10 @@ namespace SecondTrial.View
             _singletonOrder = SingletonOrder.GetInstance();
             _serialize = new Serialization();
             MyNewOrders = new ObservableCollection<Box>();
-            Customer = _singletonOrder.GetCustomer();
+            
             MyNewOrders = _singletonOrder.GetBox();
             Customer = new Customer();
+            Customer = _singletonOrder.GetCustomer();
             MyExistingOrders = new ObservableCollection<Order>();
             ReadOrders();
             NewOrder = new Order();
@@ -198,6 +199,7 @@ namespace SecondTrial.View
             NewOrder.Boxes = MyNewOrders;
             NewOrder.OrderStatus = "Waiting for shipping";
             NewOrder.OrderNumber = Convert.ToString((MyExistingOrders.Count) + 1);
+            _singletonOrder.SetOrderNumber(NewOrder.OrderNumber); 
 
             foreach (var box in NewOrder.Boxes)
             {

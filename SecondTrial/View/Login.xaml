@@ -8,12 +8,44 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBox PlaceholderText="Enter your username"  HorizontalAlignment="Left" Height="95" Margin="390,105,0,0" Text="{Binding Username,Mode=TwoWay}" VerticalAlignment="Top" Width="190"/>
+        <!--<TextBox PlaceholderText="Enter your username"  HorizontalAlignment="Left" Height="95" Margin="390,105,0,0" Text="{Binding Username,Mode=TwoWay}" VerticalAlignment="Top" Width="190"/>
         <PasswordBox Password ="{Binding Password,Mode =TwoWay}"  PlaceholderText="Enter your password" PasswordChar="#"  HorizontalAlignment="Left" Height="60" Margin="395,295,0,0" VerticalAlignment="Top" Width="195"/>
         <TextBlock HorizontalAlignment="Left" Height="50" Margin="110,135,0,0" Text="Username" TextWrapping="Wrap" VerticalAlignment="Top" Width="170"/>
         <TextBlock HorizontalAlignment="Left" Height="30" Margin="115,300,0,0" Text="Password" TextWrapping="Wrap" VerticalAlignment="Top" Width="140"/>
-        <Button Command ="{Binding LoginCommand}"  Content="Login" HorizontalAlignment="Left" Height="60" Margin="405,445,0,0" VerticalAlignment="Top" Width="165"/>
-        
+        <Button Command ="{Binding LoginCommand}"  Content="Login" HorizontalAlignment="Left" Height="60" Margin="405,445,0,0" VerticalAlignment="Top" Width="165"/>-->
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+
+        <Image Source="../Assets/back.jpg" Grid.ColumnSpan="4" Grid.RowSpan="3" FlowDirection="RightToLeft"
+               ManipulationMode="Scale" Stretch="UniformToFill"/>
+        <Rectangle Grid.Row="0"  Grid.RowSpan="3" Grid.Column="1" Fill="#b3ffffff" ManipulationMode="Scale"/>
+
+        <TextBlock Text="Pandora's Box" FontFamily="Century Gothic"  FontWeight="Bold" FontSize="40"
+                   Margin="0,211,111,73"
+                   Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <Image Source="../Assets/logo.png" HorizontalAlignment="Center"  Margin="171,25,176,155" Grid.Column="1" />
+
+
+        <StackPanel Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" >
+            <TextBox Height="40" Width="200" HorizontalAlignment="Center" 
+                     PlaceholderText="Username" Text="{Binding Username,Mode=TwoWay}"  FontFamily="Century Gothic"/>
+            <PasswordBox Height="40" Width="200" HorizontalAlignment="Center" Password ="{Binding Password,Mode =TwoWay}"
+                         PlaceholderText="Password" FontFamily="Century Gothic"/>
+            <Button Content="Login" Command ="{Binding LoginCommand}" VerticalAlignment="Bottom"  FontFamily="Century Gothic" FontSize="25" HorizontalAlignment="Center" Margin="180,0,179,0"
+            />
+        </StackPanel>
+
+
 
     </Grid>
 </Page>

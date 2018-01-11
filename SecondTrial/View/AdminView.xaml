@@ -7,15 +7,45 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="-5,0,5,0">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" >
         
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.2*"/>
 
+            <RowDefinition Height="*"/>
 
-        <TextBlock  HorizontalAlignment="Right" Height="65" Margin="0,95,565,0" Text ="{Binding Employee.Name,Mode =TwoWay}"  VerticalAlignment="Top" Width="170"/>
-        <Image Source="{Binding Employee.Image,Mode=TwoWay}" HorizontalAlignment="Left" Height="75" Margin="365,95,0,0" VerticalAlignment="Top" Width="135"/>
-        <TextBlock HorizontalAlignment="Left" Height="60" Margin="60,95,0,0" Text="Welcome" TextWrapping="Wrap" VerticalAlignment="Top" Width="170"/>
-        <Button Command ="{Binding GoToCreateBoxesCommand}"  Content="Create Boxes" HorizontalAlignment="Left" Height="45" Margin="70,165,-225,0" VerticalAlignment="Top" Width="155" Grid.ColumnSpan="2"/>
-        <Button Content="Check Inventory" HorizontalAlignment="Left" Height="45" Margin="75,265,0,0" VerticalAlignment="Top" Width="155"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="0.25*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="0.25*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Image Source="../Assets/back.jpg" Grid.ColumnSpan="5"  Grid.RowSpan="12" FlowDirection="RightToLeft"
+               ManipulationMode="Scale" Stretch="UniformToFill"/>
+        <Rectangle Grid.Row="1" Grid.RowSpan="10" Grid.Column="1" Grid.ColumnSpan ="3"  Fill="#b3ffffff" ManipulationMode="Scale"/>
+        <StackPanel Grid.Row="1" Grid.Column ="2" Orientation ="Horizontal" HorizontalAlignment ="Center" VerticalAlignment="Center">
+            <TextBlock Text="Welcome" HorizontalAlignment ="Center" VerticalAlignment="Center"></TextBlock>
+            <TextBlock Text ="{Binding Employee.Name,Mode =TwoWay }"  HorizontalAlignment ="Center" VerticalAlignment="Center" Margin ="40,0,0,0"></TextBlock>
+            <Image  Source="{Binding Employee.Image,Mode=TwoWay}" HorizontalAlignment ="Center" VerticalAlignment="Center" Margin ="40,0,0,0"  ></Image>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.RowSpan="9"  Grid.Column ="2" Orientation ="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Content ="CREATE BOXES" Command="{Binding GoToCreateBoxesCommand,Mode=TwoWay}"  FontSize="50"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Button Content ="CHECK INVENTORY" FontSize="50"  HorizontalAlignment="Center" VerticalAlignment ="Center" Margin="0,30,0,0" ></Button>
+        </StackPanel>
 
 
     </Grid>

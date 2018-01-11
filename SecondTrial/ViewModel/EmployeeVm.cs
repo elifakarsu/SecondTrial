@@ -18,6 +18,7 @@ namespace SecondTrial.ViewModel
         private readonly SingletonSerialize _singletonSerialize;
         private readonly SingletonUser _singletonUser;
 
+
         private bool _check;
         private bool _check2;
 
@@ -26,6 +27,7 @@ namespace SecondTrial.ViewModel
         private ObservableCollection<Item> _myItemCollection;
         private ObservableCollection<Order> _loadedOrders;
         private ObservableCollection<Order> _createdOrders;
+        private ObservableCollection<Order> _shippedOrders;
         private ObservableCollection<Order> _thisMonthsOrders;
         private ObservableCollection<Order> _nextMonthsOrders;
         private ObservableCollection<Order> _chosenOrders;
@@ -106,6 +108,16 @@ namespace SecondTrial.ViewModel
             {
                 _loadedOrders = value;
                 OnPropertyChanged(nameof(LoadedOrders));
+            }
+        }
+
+        public ObservableCollection<Order> ShippedOrders
+        {
+            get { return _shippedOrders; }
+            set
+            {
+                _shippedOrders = value;
+                OnPropertyChanged(nameof(ShippedOrders));
             }
         }
 
@@ -229,6 +241,7 @@ namespace SecondTrial.ViewModel
             SelectedBox = new Box();
             ThisMonthsOrders = new ObservableCollection<Order>();
             NextMonthsOrders = new ObservableCollection<Order>();
+            ShippedOrders = new ObservableCollection<Order>();
             ChosenOrders = new ObservableCollection<Order>();
             LoadedOrders = new ObservableCollection<Order>();
             CreatedOrders = new ObservableCollection<Order>();
@@ -236,6 +249,7 @@ namespace SecondTrial.ViewModel
             MonthsList = new List<int>();
             _frameNavigate = new FrameNavigate();
             _serialize = new Serialization();
+            
 
             //AddOptions();
             AddMonths();
@@ -265,13 +279,6 @@ namespace SecondTrial.ViewModel
             ShipCommand = new RelayCommand(ShipProcess);
         }
 
-        //public void AddOptions()
-        //{
-            
-        //    AdminOptions.Add("See Orders and Create Boxes");
-        //    AdminOptions.Add("Check Inventory");
-        //}
-
         public void AddMonths()
         {
         
@@ -288,85 +295,126 @@ namespace SecondTrial.ViewModel
 
             foreach (var order in MyOrders)
             {
-                foreach (var date in order.OrderDates)
+                if (order.OrderStatus == "Waiting for shipping")
                 {
-                    if (date.Month == currentDateTime.Month)
+                    foreach (var date in order.OrderDates)
                     {
-                        if (!ThisMonthsOrders.Contains(order))
+                        if (date.Month == currentDateTime.Month)
                         {
-                            ThisMonthsOrders.Add(order);
+                            if (!ThisMonthsOrders.Contains(order))
+                            {
+                                ThisMonthsOrders.Add(order);
+                            }
                         }
-                    }
-                    else if (date.Month == currentDateTime.AddMonths(1).Month)
-                    {
-                        if (!NextMonthsOrders.Contains(order))
+                        else if (date.Month == currentDateTime.AddMonths(1).Month)
                         {
-                            NextMonthsOrders.Add(order);
+                            if (!NextMonthsOrders.Contains(order))
+                            {
+                                NextMonthsOrders.Add(order);
+                            }
                         }
                     }
                 }
             }
         }
-
-        
+                
         //Create boxes
 
         List<Item> _affordableItems = new List<Item>();
         List<Item> _averageItems = new List<Item>();
         List<Item> _expensiveItems = new List<Item>();
-
+        
         public async void CreateBoxes()
         {
-            foreach (var order in ChosenOrders)
+            if ( Check == false && Check2 ) // Admin can not create next months boxes before this month
             {
-                foreach (var box in order.Boxes)
+                MessageDialog msgDialog = new MessageDialog("You still have order for this month");
+                await msgDialog.ShowAsync();
+            }
+            else
+            {
+                foreach (var order in ChosenOrders)
                 {
-                    var categoryname = box.MyInformationAboutBoxes.Category;
+                    foreach (var box in order.Boxes)
+                    {
+                        var categoryname = box.MyInformationAboutBoxes.Category;
 
-                    SearchItems(categoryname);
+                        SearchItems(categoryname);
 
-                    if (box.MyInformationAboutBoxes.AffordableCheck == true)
-                    {
-                        RandomSelection(box, _affordableItems);
-                    }
-                    else if (box.MyInformationAboutBoxes.AverageCheck == true)
-                    {
-                        RandomSelection(box, _averageItems);
-                    }
-                    else
-                    {
-                        RandomSelection(box, _expensiveItems);
+                        if (box.MyInformationAboutBoxes.AffordableCheck == true)
+                        {
+                            RandomSelection(box, _affordableItems);
+                        }
+                        else if (box.MyInformationAboutBoxes.AverageCheck == true)
+                        {
+                            RandomSelection(box, _averageItems);
+                        }
+                        else
+                        {
+                            RandomSelection(box, _expensiveItems);
+                        }
                     }
                 }
-            }
 
-            foreach (var order in ChosenOrders)
-            {
-                foreach (var box in order.Boxes)
+                foreach (var order in ChosenOrders)
                 {
-                    if (box.ItemsInMyBox.Count != 10)
+                    if (order.OrderStatus == "Waiting for shipping")
                     {
-                        foreach (var item in box.ItemsInMyBox)
+                        foreach (var box in order.Boxes)
                         {
-                            MyItemCollection.Add(item);
+                            if (box.ItemsInMyBox.Count != 10)
+                            {
+                                foreach (var item in box.ItemsInMyBox)
+                                {
+                                    MyItemCollection.Add(item);
+                                }
+                                MessageDialog msgDialog = new MessageDialog($"Inventory doesnt have enough items to create {box.MyInformationAboutBoxes.Name} Box in Order: {order.OrderNumber} ");
+                                await msgDialog.ShowAsync();
+                            }
+                            else
+                            {
+                                MessageDialog msgDialog = new MessageDialog($"The {box.MyInformationAboutBoxes.Name} Box in Order: {order.OrderNumber} created successfully ");
+                                await msgDialog.ShowAsync();
+                                order.OrderDates.RemoveAt(0);
+                                CreatedOrders.Add(order);
+                            }
                         }
-                        MessageDialog msgDialog = new MessageDialog($"Inventory doesnt have enough items to create {box.MyInformationAboutBoxes.Name} Box in Order: {order.OrderNumber} ");
-                        await msgDialog.ShowAsync();
+
+                        
                     }
-                    else
+
+                }
+
+               
+                foreach (var order in CreatedOrders)
+                {
+                    if (ChosenOrders.Contains(order))
                     {
-                        MessageDialog msgDialog = new MessageDialog($"The {box.MyInformationAboutBoxes.Name} Box in Order: {order.OrderNumber} created successfully ");
-                        await msgDialog.ShowAsync();
-                        CreatedOrders.Add(order);
                         ChosenOrders.Remove(order);
                     }
                 }
+
+                foreach (var order in MyOrders)
+                {
+                    foreach (var createdOrder in CreatedOrders)
+                    {
+
+                        if (order.OrderNumber == createdOrder.OrderNumber)
+                        {
+                            order.OrderStatus = "Box created";
+                        }
+
+                    }
+
+                }
+
+                await _serialize.SaveOrders(MyOrders);
+
+                await _serialize.SaveCreatedOrders(CreatedOrders);
+
+                await _serialize.UpdateItemCatalog(MyItemCollection);
             }
-
-            await _serialize.SaveCreatedOrders(CreatedOrders);
-
-            await _serialize.UpdateItemCatalog(MyItemCollection);
-
+            
         }
 
         public void SearchItems(String category)
@@ -429,14 +477,14 @@ namespace SecondTrial.ViewModel
         public void ShowThisMonthsOrder()
         {
             Check2 = false;
-            //ChosenOrders.Clear();
+            ChosenOrders = new ObservableCollection<Order>();
             ChosenOrders = ThisMonthsOrders;
         }
 
         public void ShowNextMonthsOrder()
         {
             Check = false;
-            //ChosenOrders.Clear();
+            ChosenOrders = new ObservableCollection<Order>();
             ChosenOrders = NextMonthsOrders;
         }
 
@@ -483,26 +531,46 @@ namespace SecondTrial.ViewModel
 
         public async void ReadMyOrders()
         {
-            LoadedOrders = await _serialize.LoadCreatedOrders();
+            try
+            {
+                LoadedOrders = await _serialize.LoadCreatedOrders();
+            }
+            catch (Exception e)
+            {
+            }
+            
         }
 
         public async void ShipProcess()
         {
             SelectedOrder.OrderStatus = "Shipped";
-
+            ShippedOrders.Add(SelectedOrder);
+            
             MessageDialog myMessageDialog = new MessageDialog("Order has shipped.");
             await myMessageDialog.ShowAsync();
 
-            foreach (var order in LoadedOrders)
+            foreach (var shippedOrder in ShippedOrders)
             {
-                if (order.Boxes.Contains(SelectedBox))
+                if (LoadedOrders.Contains(shippedOrder))
                 {
-                    order.Boxes.Remove(SelectedBox);
+                    LoadedOrders.Remove(shippedOrder);
                 }
 
             }
-            Check = false;
+            
+            await _serialize.SaveShippedOrders(ShippedOrders);
 
+            foreach (var order in MyOrders)
+            {
+                foreach (var shippedOrder in ShippedOrders)
+                {
+                    if (order.OrderNumber == shippedOrder.OrderNumber)
+                    {
+                        order.OrderStatus = "Shipped";
+                    }
+                }
+            }
+            Check = false;
         }
 
     }

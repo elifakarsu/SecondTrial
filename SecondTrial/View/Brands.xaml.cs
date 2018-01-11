@@ -12,7 +12,6 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using SecondTrial.ViewModel;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -21,15 +20,11 @@ namespace SecondTrial.View
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class OrderDetailsForCustomer : Page
+    public sealed partial class Brands : Page
     {
-
-        private OrderDetailsVm _pageVm;
-        public OrderDetailsForCustomer()
+        public Brands()
         {
             this.InitializeComponent();
-            _pageVm = new OrderDetailsVm();
-            DataContext = _pageVm;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

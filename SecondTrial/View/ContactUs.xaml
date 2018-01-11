@@ -1,0 +1,57 @@
+﻿<Page
+    x:Class="SecondTrial.View.ContactUs"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SecondTrial.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.25*"/>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="1.25*"/>
+            <ColumnDefinition Width="1.25*"/>
+            <ColumnDefinition Width="0.5*"/>
+        </Grid.ColumnDefinitions>
+
+        <Image Source="../Assets/back.jpg" Grid.ColumnSpan="4" Grid.RowSpan="4" FlowDirection="RightToLeft"
+               ManipulationMode="Scale" Stretch="UniformToFill"/>
+        
+        <Rectangle Grid.Row="1" Grid.ColumnSpan="4" Grid.Column="0" Grid.RowSpan="2"  Fill="#b3ffffff" ManipulationMode="Scale"/>
+        <Button Grid.Row="1" Grid.Column="0"  Background="{x:Null}" HorizontalAlignment="Center" Foreground="{x:Null}" Click="Button_Click" >
+            <Image Source="../Assets/arrow_left-512.png"  />
+        </Button>
+        <TextBlock Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"  Text="Contact Us" HorizontalAlignment="Center" FontSize="30" FontWeight="Bold" ></TextBlock>
+        <RichTextBlock Grid.Row="2"  Grid.Column="1" FontSize="20" FontFamily="Century Gothic" HorizontalAlignment="Center" VerticalAlignment="top">
+            <Paragraph FontFamily="Modern Serif" >
+                We are always happy to give feedback from you, don't hesitate to contact us.</Paragraph>
+            <Paragraph FontFamily="Modern Serif"></Paragraph>
+            <Paragraph FontFamily="Modern Serif">You can call, send mail or use the contact form below.
+            </Paragraph>
+            <Paragraph></Paragraph>
+            <Paragraph FontFamily="Modern Serif">Roskilde, Denmark 4000
+            </Paragraph>
+            <Paragraph></Paragraph>
+            <Paragraph FontFamily="Modern Serif">info@pandora.com</Paragraph>
+            <Paragraph FontFamily="Modern Serif">1-160-000-000</Paragraph>
+
+        </RichTextBlock>
+
+        <StackPanel Grid.Column="2" Grid.Row="2"  Grid.ColumnSpan="2" VerticalAlignment="top" >
+            <TextBox PlaceholderText="Name" Height="50"></TextBox>
+            <TextBox PlaceholderText="Email" Height="50" ></TextBox>
+            <TextBox PlaceholderText="Subject" Height="50" ></TextBox>
+            <TextBox PlaceholderText="Message" Height="126"></TextBox>
+            <Button Content="Send"  HorizontalAlignment="Center" Height="30" Width="70" Margin="0,20,0,0"></Button>
+        </StackPanel>
+
+
+    </Grid>
+</Page>

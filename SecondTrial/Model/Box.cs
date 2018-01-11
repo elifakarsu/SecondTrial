@@ -14,6 +14,7 @@ namespace SecondTrial.Model
         private BoxInformation _myInformationAboutBoxes;
         private bool _checkSubscription;
         private int _numberofSubscriptionMonths;
+
         
 
         public ObservableCollection<Item> ItemsInMyBox
@@ -44,14 +45,16 @@ namespace SecondTrial.Model
             get => _numberofSubscriptionMonths;
             set => _numberofSubscriptionMonths = value;
         }
-        
 
-        public Box( ObservableCollection<Item> itemsInMyBox, BoxInformation myInformationAboutBoxes, bool checkSubscription, int numberofSubscriptionMonths)
+
+
+        public Box( ObservableCollection<Item> itemsInMyBox, BoxInformation myInformationAboutBoxes, bool checkSubscription, int numberofSubscriptionMonths,string boxStatus)
         {   
             _itemsInMyBox = itemsInMyBox;
             _myInformationAboutBoxes = myInformationAboutBoxes;
             _checkSubscription = checkSubscription;
             _numberofSubscriptionMonths = numberofSubscriptionMonths;
+  
         }
         public Box()
         {

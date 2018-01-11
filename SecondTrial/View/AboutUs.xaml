@@ -1,0 +1,45 @@
+﻿<Page
+    x:Class="SecondTrial.View.AboutUs"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SecondTrial.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.25*"/>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2.5*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        
+
+        <Image Source="../Assets/back.jpg" Grid.ColumnSpan="4" Grid.RowSpan="4" FlowDirection="RightToLeft"
+               ManipulationMode="Scale" Stretch="UniformToFill"/>
+        
+        <Rectangle Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="3" Grid.Column="0" Fill="#b3ffffff" ManipulationMode="Scale"/>
+        <Button Grid.Row="1" Grid.Column="0"  Background="{x:Null}" HorizontalAlignment="Center" Foreground="{x:Null}" Click="Button_Click" >
+            <Image Source="../Assets/arrow_left-512.png"  />
+        </Button>
+        <TextBlock Grid.Row="1" Grid.Column="1" Text="About Us" HorizontalAlignment="Center" VerticalAlignment ="Bottom"  FontSize="50" FontWeight="Bold" ></TextBlock>
+        <StackPanel Grid.Row="2" Grid.Column="1">
+            
+            <TextBlock FontSize="25"
+                TextWrapping="Wrap" Text="Has anyone ever told you that beauty 
+or your secret hobbies cannot save or help the world? Well, our company made sure that when we hit the market we will be in favor of others. Our company is involved with different charity organizations such as Roskilde Kvindekrisecenter, Friends of the Earth and UNICEF. Those are our main priorities now, but we are always ready to help others. "></TextBlock>
+            <TextBlock HorizontalAlignment="Center" FontSize="23"  Text="From 
+gaming to beauty and health, dive on in and pamper yourself." Margin="0,40,0,0" FontWeight="Bold"
+                ></TextBlock>
+        </StackPanel>
+        
+        <Image Grid.Row="0" Source="../Assets/logo.png" Grid.Column="1" HorizontalAlignment="Center" />
+    </Grid>
+</Page>

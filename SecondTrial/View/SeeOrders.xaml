@@ -9,32 +9,70 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-        <TextBlock  HorizontalAlignment="Right" Height="65" Margin="0,95,1100,0" Text ="{Binding Employee.Name,Mode =TwoWay}"  VerticalAlignment="Top" Width="135"/>
-        <Image Source="{Binding Employee.Image,Mode=TwoWay}" HorizontalAlignment="Left" Height="75" Margin="375,95,0,0" VerticalAlignment="Top" Width="75"/>
-        <TextBlock HorizontalAlignment="Left" Height="60" Margin="60,95,0,0" Text="Welcome" TextWrapping="Wrap" VerticalAlignment="Top" Width="170"/>
-        <TextBlock HorizontalAlignment="Left" Height="75" Margin="60,195,0,0" Text="Waiting orders" TextWrapping="Wrap" VerticalAlignment="Top" Width="140"/>
-        <ListView ItemsSource ="{Binding CreatedOrders,Mode =TwoWay}" SelectedItem ="{Binding SelectedOrder,Mode =TwoWay}"  HorizontalAlignment="Left" Height="400" Margin="35,225,0,0" VerticalAlignment="Top" Width="380">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation ="Horizontal">
-                        <TextBlock Text="{Binding OrderNumber}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" FontWeight="Bold"></TextBlock>
-                    </StackPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.2*"/>
+
+            <RowDefinition Height="*"/>
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="0.25*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="0.25*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Image Source="../Assets/back.jpg" Grid.ColumnSpan="5"  Grid.RowSpan="12" FlowDirection="RightToLeft"
+               ManipulationMode="Scale" Stretch="UniformToFill"/>
+        <Rectangle Grid.Row="1" Grid.RowSpan="10" Grid.Column="0" Grid.ColumnSpan ="5"  Fill="#b3ffffff" ManipulationMode="Scale"/>
+
+        <StackPanel Grid.Row="1" Grid.Column ="2" Orientation ="Horizontal" HorizontalAlignment ="Center" VerticalAlignment="Center">
+            <TextBlock Text="Welcome" HorizontalAlignment ="Center" VerticalAlignment="Center"></TextBlock>
+            <TextBlock Text ="{Binding Employee.Name,Mode =TwoWay }"  HorizontalAlignment ="Center" VerticalAlignment="Center" Margin ="40,0,0,0"></TextBlock>
+            <Image  Source="{Binding Employee.Image,Mode=TwoWay}" HorizontalAlignment ="Center" VerticalAlignment="Center" Margin ="40,0,0,0"  ></Image>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.Column ="0" Grid.RowSpan="8" >
+            <TextBlock Text="Waiting orders" HorizontalAlignment ="Center" ></TextBlock>
+            <ListView ItemsSource ="{Binding LoadedOrders,Mode =TwoWay}" SelectedItem ="{Binding SelectedOrder,Mode =TwoWay}"  >
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation ="Horizontal">
+                            <TextBlock Text="{Binding OrderNumber}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" FontWeight="Bold"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </StackPanel>
+
+
+
 
         <Button Command ="{Binding GoOrderDetailCommand}"  Content="See selected orders detail" HorizontalAlignment="Left" Height="60" Margin="60,665,0,0" VerticalAlignment="Top" Width="235"/>
 
-        <TextBlock Text="Customer Details"  HorizontalAlignment="Left" Height="70" Margin="660,15,0,0" VerticalAlignment="Top" Width="150"/>
-        <TextBox Header ="Name"  HorizontalAlignment="Left" Height="60" Margin="660,50,0,0" Text="{Binding SelectedOrder.Customer.Name ,Mode =TwoWay}" VerticalAlignment="Top" Width="125"/>
-        <TextBox Header="Country"   HorizontalAlignment="Left" Height="60" Margin="665,115,0,0" Text="{Binding SelectedOrder.Customer.Country}" VerticalAlignment="Top" Width="125"/>
-        <TextBox Header="City"   HorizontalAlignment="Left" Height="65" Margin="825,105,0,0" Text="{Binding SelectedOrder.Customer.City}" VerticalAlignment="Top" Width="125"/>
-        <TextBox Header="Adress"   HorizontalAlignment="Left" Height="65" Margin="990,120,0,0" Text="{Binding SelectedOrder.Customer.Address}" VerticalAlignment="Top" Width="125"/>
-        <TextBox Header="Phone Number"   HorizontalAlignment="Left" Height="65" Margin="655,200,0,0" Text="{Binding SelectedOrder.Customer.PhoneNumber}" VerticalAlignment="Top" Width="125"/>
-        <TextBox Header="E-Mail"   HorizontalAlignment="Left" Height="70" Margin="825,195,0,0" Text="{Binding SelectedOrder.Customer.EMail}" VerticalAlignment="Top" Width="125"/>
-        <TextBox Header ="Order Number"  HorizontalAlignment="Left" Height="60" Margin="850,15,0,0" Text="{Binding SelectedOrder.OrderNumber,Mode =TwoWay}" TextWrapping="Wrap" VerticalAlignment="Top" Width="220"/>
-        <TextBox Header ="Order Status"  HorizontalAlignment="Left" Height="65" Margin="1130,10,0,0" Text="{Binding SelectedOrder.OrderStatus ,Mode =TwoWay}" TextWrapping="Wrap" VerticalAlignment="Top" Width="220"/>
-        <ListView ItemsSource ="{Binding SelectedOrder.Boxes,Mode =TwoWay}" SelectedItem ="{Binding SelectedBox,Mode =TwoWay}"  HorizontalAlignment="Left" Height="220" Margin="900,290,0,0" VerticalAlignment="Top" Width="280">
+        <TextBlock Text="Customer Details" Grid.Row="2" Grid.Column="2"  HorizontalAlignment="Center"   VerticalAlignment="Center" />
+        <TextBox Header ="Name"  Grid.Row="3" Grid.Column="2"  HorizontalAlignment="Center"   Text="{Binding SelectedOrder.Customer.Name ,Mode =TwoWay}" VerticalAlignment="Center" Height="90" Width="101" />
+        <TextBox Header="Country"  Grid.Row="4" Grid.Column="2"  HorizontalAlignment="Center" Text="{Binding SelectedOrder.Customer.Country}" VerticalAlignment="Center" Height="90" Width="101" />
+        <TextBox Header="City" Grid.Row="5" Grid.Column="2"   HorizontalAlignment="Center"  Text="{Binding SelectedOrder.Customer.City}" VerticalAlignment="Center" Width="100" Height="90" />
+        <TextBox Header="Adress" Grid.Row="6" Grid.Column="2"   HorizontalAlignment="Center"   Text="{Binding SelectedOrder.Customer.Address}" VerticalAlignment="Top" Height="90" Width="100" />
+        <TextBox Header="Phone Number" Grid.Row="7" Grid.Column="2"   HorizontalAlignment="Center"    Text="{Binding SelectedOrder.Customer.PhoneNumber}" VerticalAlignment="Top" Height="90" />
+        <TextBox Header="E-Mail" Grid.Row="8" Grid.Column="2"   HorizontalAlignment="Center"  Text="{Binding SelectedOrder.Customer.EMail}" VerticalAlignment="Top" Height="90" Width="101" />
+        <TextBox Header ="Order Number" Grid.Row="9" Grid.Column="2"   HorizontalAlignment="Center"   Text="{Binding SelectedOrder.OrderNumber,Mode =TwoWay}" TextWrapping="Wrap" VerticalAlignment="Top" Height="90" />
+        <TextBox Header ="Order Status" Grid.Row="10" Grid.Column="2"   HorizontalAlignment="Center"  Text="{Binding SelectedOrder.OrderStatus ,Mode =TwoWay}" TextWrapping="Wrap" VerticalAlignment="Top" Height="90" />
+        <ListView ItemsSource ="{Binding SelectedOrder.Boxes,Mode =TwoWay}"  Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="2"  SelectedItem ="{Binding SelectedBox,Mode =TwoWay}"  HorizontalAlignment="Left"  VerticalAlignment="Top" >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
@@ -44,8 +82,8 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <ListView ItemsSource ="{Binding SelectedBox.ItemsInMyBox,Mode =TwoWay}" HorizontalAlignment="Left" Height="205" Margin="1195,165,0,0" VerticalAlignment="Top" Width="235"/>
+        <ListView ItemsSource ="{Binding SelectedBox.ItemsInMyBox,Mode =TwoWay}" Grid.Row="4" Grid.Column="4"  VerticalAlignment="Top"/>
         <CheckBox  Content="Package has shipped" Command ="{Binding ShipCommand}"
-                   HorizontalAlignment="Left" Height="25" Margin="680,360,0,0" VerticalAlignment="Top" Width="230" IsChecked="{Binding Check,Mode=TwoWay}"/>
+                   HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1" Grid.Column="0"  IsChecked="{Binding Check,Mode=TwoWay}" Margin="84,52,0,0"/>
     </Grid>
 </Page>

@@ -30,5 +30,10 @@ namespace SecondTrial.View
             pageVm = new BoxVm();
             DataContext = pageVm;
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(CategoryPage));
+        }
     }
 }

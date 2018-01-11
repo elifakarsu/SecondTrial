@@ -5,11 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Payments;
+using SecondTrial.Model;
 
 namespace SecondTrial.Model
 {
     class SingletonOrder
     {
+       
         public static Order Order;
         public static Customer Customer;
         public static ObservableCollection<Box> OrderList;
@@ -34,6 +36,8 @@ namespace SecondTrial.Model
             return Instance;
         }
         
+
+
         public void SetBoxToOrder(ObservableCollection<Box> boxes)
         {
             Order.Boxes = boxes;
@@ -43,6 +47,16 @@ namespace SecondTrial.Model
         {
                 return Order.Boxes;
            
+        }
+
+        public void SetOrderNumber(string number)
+        {
+            Order.OrderNumber = number;
+        }
+
+        public string GetOrderNumber()
+        {
+            return Order.OrderNumber;
         }
 
         public Order GetOrder()

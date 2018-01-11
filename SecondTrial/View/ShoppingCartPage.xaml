@@ -11,26 +11,33 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="0.5*"/>
-            <RowDefinition Height="0.25*"/>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.2*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1.5*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="1.5*"/>
             <ColumnDefinition Width="1.5*"/>
         </Grid.ColumnDefinitions>
 
 
-        <Image Source="../Assets/back.jpg" Grid.ColumnSpan="4" Grid.RowSpan="4" FlowDirection="RightToLeft"
+        <Image Source="../Assets/back.jpg" Grid.ColumnSpan="4" Grid.RowSpan="10" FlowDirection="RightToLeft"
                ManipulationMode="Scale" Stretch="UniformToFill"/>
-        <Rectangle  Grid.Column="0" Grid.ColumnSpan="3"  Grid.Row="2"  Fill="#b3ffffff" ManipulationMode="Scale"/>
+        <Rectangle  Grid.Column="0" Grid.ColumnSpan="3"  Grid.Row="1" Grid.RowSpan="8"  Fill="#b3ffffff" ManipulationMode="Scale"/>
 
 
 
-        <TextBlock Grid.Row ="2" Grid.Column="0"  HorizontalAlignment="Center"  Text="Your Items:"  TextWrapping="Wrap" VerticalAlignment="Top" FontSize="60" FontFamily="Modern Serif" TextAlignment="Center"/>
+        <TextBlock Grid.Row ="1" Grid.Column="0"  HorizontalAlignment="Center"  Text="Your Items:"  TextWrapping="Wrap" VerticalAlignment="Top" FontSize="50" FontFamily="Modern Serif" TextAlignment="Center"/>
 
-        <ListView Grid.Row="2" Grid.Column="0"   ItemsSource ="{Binding MyNewOrders,Mode =TwoWay}" SelectedItem ="{Binding SelectedOrder,Mode =TwoWay}"  HorizontalAlignment="Center" VerticalAlignment="Center"  FontFamily="Modern Serif">
+        <ListView Grid.Row="2" Grid.Column="0" Grid.RowSpan="4"  ItemsSource ="{Binding MyNewOrders,Mode =TwoWay}" SelectedItem ="{Binding SelectedOrder,Mode =TwoWay}"  HorizontalAlignment="Left" VerticalAlignment="Center"  FontFamily="Modern Serif">
 
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -46,11 +53,24 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <ListView SelectedIndex ="{Binding SelectedIndex, Mode =TwoWay}" Grid.Row="2" Grid.Column="1"  ItemsSource ="{Binding TextList, Mode =TwoWay}" FontWeight="Bold"  HorizontalAlignment="Left" VerticalAlignment="Center" />
-
+        <ListView SelectedIndex ="{Binding SelectedIndex, Mode =TwoWay}" Grid.Row="2" Grid.Column="0" Grid.RowSpan="4"  ItemsSource ="{Binding TextList, Mode =TwoWay}" FontWeight="Bold"  HorizontalAlignment="Right" VerticalAlignment="Center" />
+        <StackPanel Orientation ="Horizontal" Grid.Row="2" Grid.Column="1"  VerticalAlignment="Center" HorizontalAlignment="Center" >
+            <TextBlock Text="Subtotal:" FontFamily="Modern Serif" FontSize="16" ></TextBlock>
+            <TextBlock FontWeight="Bold"  Text="{Binding TotalPrice,Mode =TwoWay}"  FontFamily="Modern Serif" FontSize="16"/>
+            <TextBlock FontWeight="Bold"  Text="€"  FontFamily="Modern Serif" FontSize="16"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal"  Grid.Row="3" Grid.Column="1"  VerticalAlignment="Center" HorizontalAlignment="Center" >
+            <TextBlock Text="Shipping:" FontFamily="Modern Serif" FontSize="16" ></TextBlock>
+            <TextBlock FontWeight="Bold"  Text="{Binding ShippingPrice,Mode =TwoWay}"  FontFamily="Modern Serif" FontSize="16"/>
+            <TextBlock FontWeight="Bold"  Text="€"  FontFamily="Modern Serif" FontSize="16"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="1"  VerticalAlignment="Center" HorizontalAlignment="Center" >
+            <TextBlock Text="Total Price:" Height="17" Width="81" FontFamily="Modern Serif" FontSize="16" ></TextBlock>
+            <TextBlock FontWeight="Bold"  Text="{Binding TotalPriceWithShipping,Mode =TwoWay}"  FontFamily="Modern Serif" FontSize="16"/>
+            <TextBlock FontWeight="Bold"  Text="€"  FontFamily="Modern Serif" FontSize="16"/>
+        </StackPanel>
         
-        <TextBlock Grid.Row="2" Grid.Column="1" FontWeight="Bold"  Text="{Binding TotalPrice,Mode =TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Center"  FontFamily="Modern Serif"/>
-        <Button  Grid.Row="2" Grid.Column="1" Content="Check Out" Command ="{Binding CheckOutCommand}"  HorizontalAlignment="Center"  VerticalAlignment="Bottom" FontFamily="Modern Serif" FontWeight ="Bold" Margin="136,0,136,74" />
+        <Button  Grid.Row="5" Grid.Column="1" Content="Check Out" Command ="{Binding CheckOutCommand}"  HorizontalAlignment="Center"  VerticalAlignment="Bottom" FontFamily="Modern Serif" FontWeight ="Bold"  />
 
 
 

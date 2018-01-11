@@ -201,7 +201,7 @@ namespace SecondTrial.ViewModel
             else if ((int) result.Id == 0)
             {
                 _singletonOrder.SetBoxToOrder(OrderList);
-                Type type = typeof(MainPage);
+                Type type = typeof(Category);
                 _frameNavigate.ActivateFrameNavigation(type);
             }
 

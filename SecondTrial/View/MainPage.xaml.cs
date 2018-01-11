@@ -75,5 +75,46 @@ namespace SecondTrial
         {
             Frame.Navigate(typeof(Login));
         }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(AboutUs));
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(ContactUs));
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(CategoryPage));
+        }
+
+        private void Button_Click_6(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(CategoryPage));
+        }
+
+        private void Button_Click_7(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Brands)); 
+        }
+
+        private void Button_Click_8(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(AboutUs));
+        }
+
+        private void Button_Click_9(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(ContactUs));
+        }
     }
-}
+    }
+

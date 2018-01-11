@@ -8,6 +8,11 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <Image Source="../Assets/back.jpg" Grid.ColumnSpan="4" Grid.RowSpan="8" FlowDirection="RightToLeft"
+               ManipulationMode="Scale" Stretch="UniformToFill"/>
+        <Rectangle  Grid.Column="0" Grid.ColumnSpan="3"  Grid.Row="2"  Fill="#b3ffffff" ManipulationMode="Scale"/>
+
         <Button Content="Pay" HorizontalAlignment="Left" Height="145" Margin="65,502,0,0" VerticalAlignment="Top" Width="853" Command="{Binding AddCommand}" Click="Button_Click"/>
         <TextBox x:Name="TxtCardName" HorizontalAlignment="Left" Height="85" Margin="65,61,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="839" RenderTransformOrigin="0.505,-0.256"/>
         <Grid HorizontalAlignment="Left" Height="1000" VerticalAlignment="Top" Width="1500">

@@ -12,30 +12,45 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="0.5*"/>
             <RowDefinition Height="0.25*"/>
+            <RowDefinition Height="0.5*"/>
             <RowDefinition Height="2*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.5*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1.5*"/>
-            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="1.5*"/>
         </Grid.ColumnDefinitions>
 
 
-        <Image Source="../Assets/back.jpg" Grid.ColumnSpan="4" Grid.RowSpan="4" FlowDirection="RightToLeft"
+        <Image Source="../Assets/back.jpg" Grid.ColumnSpan="4" Grid.RowSpan="11" FlowDirection="RightToLeft"
                ManipulationMode="Scale" Stretch="UniformToFill"/>
-        <Rectangle  Grid.Column="0" Grid.ColumnSpan="3"  Grid.Row="2"  Fill="#b3ffffff" ManipulationMode="Scale"/>
+        <Rectangle  Grid.Column="0" Grid.ColumnSpan="3"  Grid.Row="2" Grid.RowSpan="8" Fill="#b3ffffff" ManipulationMode="Scale"/>
 
-        <Image Grid.Row="0" Source="../Assets/logo.png" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.RowSpan="2" />
-        <Image Grid.Row="1" Grid.Column="1" Source="../Assets/box1.jpg" Opacity="0.7" Margin="0,100,0,100" Stretch="Fill"  Grid.RowSpan="2"></Image>
-        <TextBlock Grid.Row ="2" Grid.Column="2"  HorizontalAlignment="Center"  Text="Choose Your Plan"  TextWrapping="Wrap" VerticalAlignment="Top" FontSize="60" FontFamily="Modern Serif" TextAlignment="Center"/>
-        <TextBlock Grid.Row="2" Grid.Column="0"  Text ="{Binding SelectedBox.MyInformationAboutBoxes.Name}" HorizontalAlignment="Center" VerticalAlignment="Top"  FontFamily="Modern Serif" FontSize="60"  />
-        <TextBlock Grid.Row="2" Grid.Column="0"  Text ="{Binding SelectedBox.MyInformationAboutBoxes.Description}" Margin="0,80,0,0"  HorizontalAlignment="Center" TextWrapping="Wrap"  VerticalAlignment="Top" FontFamily="Modern Serif" FontSize="20"/>
-        <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center"  Text ="{Binding SelectedBox.MyInformationAboutBoxes.Price}"  Margin="0,350,0,0" VerticalAlignment="Top" FontFamily="Modern Serif" FontSize="20"/>
-        <TextBlock Text="€"  Grid.Row="2" Grid.Column="0" HorizontalAlignment ="Center"  Margin="0,350,-40,0" FontSize="20" FontFamily="Modern Serif"  ></TextBlock>
-        <ListView Grid.Row="2" Grid.Column="2"  ItemsSource="{Binding PlanList}" SelectedItem="{Binding SelectedPlan,Mode=TwoWay}"  HorizontalAlignment="Center"  VerticalAlignment="Top" Margin="0,150,0,0" FontFamily="Modern Serif" />
-        <Button Content="Add shopping cart" Grid.Row ="2" Grid.Column="1"  Command ="{Binding AddMyOrder}"  HorizontalAlignment="Center"  VerticalAlignment="Bottom" FontFamily="Modern Serif"  />
-        <Button Content="Back to boxes"  Grid.Row ="2" Grid.Column="1" Command ="{Binding BackToPreviousPageCommand}" HorizontalAlignment="Center"  VerticalAlignment="Bottom" Margin="121,0,120,48" FontFamily="Modern Serif"   />
+        <Image Grid.Row="0" Source="../Assets/logo.png" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.RowSpan="2" />
+        <TextBlock Grid.Row ="5" Grid.ColumnSpan="2"  HorizontalAlignment="Center" VerticalAlignment="Center" Text="Choose Your Plan"   FontSize="55" FontFamily="Modern Serif" TextAlignment="Center"/>
+        <TextBlock Grid.Row="3" Grid.Column="0"  Text ="{Binding SelectedBox.MyInformationAboutBoxes.Name}" HorizontalAlignment="Center" VerticalAlignment="Center"  FontFamily="Modern Serif" FontSize="55"  />
+        <!--<Image Grid.Row="3" ></Image>-->
+        <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Vertical">
+            <TextBlock Text ="{Binding SelectedBox.MyInformationAboutBoxes.Description}"  HorizontalAlignment="Center"  VerticalAlignment="Center" FontFamily="Modern Serif" FontSize="20" TextWrapping="Wrap"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center" Text ="{Binding SelectedBox.MyInformationAboutBoxes.Price}"   FontFamily="Modern Serif" FontSize="20"/>
+                <TextBlock Text="€"  HorizontalAlignment ="Right" VerticalAlignment="Center" FontSize="20" FontFamily="Modern Serif"  ></TextBlock>
+            </StackPanel>
+            
+        </StackPanel>
+
+        
+        <ListView Grid.Row="6" Grid.ColumnSpan="2" Grid.RowSpan="3"  ItemsSource="{Binding PlanList}" SelectedItem="{Binding SelectedPlan,Mode=TwoWay}"  HorizontalAlignment="Center"  VerticalAlignment="Center" FontFamily="Modern Serif" />
+        <Button Content="Add shopping cart" Grid.Row ="9" Grid.Column="2"  Command ="{Binding AddMyOrder}"  HorizontalAlignment="Center"  VerticalAlignment="Center" FontFamily="Modern Serif"  />
+        <Button Content="Back to boxes"  Grid.Row ="9" Grid.Column="0" Command ="{Binding BackToPreviousPageCommand}" HorizontalAlignment="Center"  VerticalAlignment="Center" FontFamily="Modern Serif"   />
+
+
 
 
     </Grid>

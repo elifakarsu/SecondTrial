@@ -11,27 +11,30 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="0.5*"/>
             <RowDefinition Height="0.25*"/>
-            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="2*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="2.5*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition Width="1.5*"/>
         </Grid.ColumnDefinitions>
 
 
         <Image Source="../Assets/back.jpg" Grid.ColumnSpan="4" Grid.RowSpan="4" FlowDirection="RightToLeft"
                ManipulationMode="Scale" Stretch="UniformToFill"/>
-        <Rectangle Grid.RowSpan="4"  Grid.Column="1" Grid.Row="0"  Fill="#b3ffffff" ManipulationMode="Scale"/>
-
-        <Image Grid.Row="0" Source="../Assets/logo.png" Grid.Column="1" HorizontalAlignment="Center" />
-        <ListView Grid.Row="2" Grid.Column="1" ItemsSource ="{Binding AllOfMyBoxes,Mode =TwoWay}" SelectedItem="{Binding SelectedBox,Mode =TwoWay}"   HorizontalAlignment="Stretch"   VerticalAlignment="Top" >
+        <!--<Rectangle Grid.RowSpan="4"  Grid.Column="1" Grid.Row="0"  Fill="#b3ffffff" ManipulationMode="Scale"/>-->
+        <Rectangle  Grid.Column="0" Grid.ColumnSpan="3"  Grid.Row="1" Grid.RowSpan="2"  Fill="#b3ffffff" ManipulationMode="Scale"/>
+        <TextBlock Grid.Row="1" Grid.ColumnSpan="2" Text="CHOOSE A TYPE OF BOXES"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="48" ></TextBlock>
+        <Image Grid.Row="0" Source="../Assets/logo.png" Grid.ColumnSpan="2"  HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <Image Grid.Row="2" Grid.Column="1" ></Image>
+        <ListView Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"  ItemsSource ="{Binding AllOfMyBoxes,Mode =TwoWay}" SelectedItem="{Binding SelectedBox,Mode =TwoWay}"    HorizontalAlignment="Center" VerticalAlignment="Center" >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation ="Horizontal" >
                         <TextBlock Text="{Binding MyInformationAboutBoxes.Name}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" FontWeight="Bold"></TextBlock>
+                        <TextBlock Text="-" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" FontWeight="Bold"></TextBlock>
                         <TextBlock Text="{Binding MyInformationAboutBoxes.Price}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" FontWeight="Bold"></TextBlock>
+                        <TextBlock Text="€" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" FontWeight="Bold"></TextBlock>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
@@ -43,9 +46,9 @@
                 </Style>
             </ListView.ItemContainerStyle>
         </ListView>
-        
+
         <Button Content="Back to category list" Command ="{Binding GoToMainPageCommand}"  HorizontalAlignment="Left" Height="56" Margin="47,879,0,0" VerticalAlignment="Top" Width="163"/>
 
-
     </Grid>
+
 </Page>

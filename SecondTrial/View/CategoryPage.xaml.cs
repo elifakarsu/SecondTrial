@@ -30,5 +30,31 @@ namespace SecondTrial.View
             pageVm = new MainPageVm();
             DataContext = pageVm;
         }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            int change = 1;
+
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(2);
+
+            timer.Tick += (o, a) =>
+            {
+                int newIndex = categoriesFlipView.SelectedIndex + change;
+                if (newIndex >= categoriesFlipView.Items.Count || newIndex < 0)
+                {
+                    change *= -1;
+                }
+
+                categoriesFlipView.SelectedIndex += change;
+            };
+
+            timer.Start();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(MainPage));
+        }
     }
 }

@@ -17,8 +17,17 @@ namespace SecondTrial.Model
         private string _orderStatus;
         private string _orderNumber;
         private ObservableCollection<DateTimeOffset> _orderDates;
-  
-        public ObservableCollection<Box> Boxes { get => _boxes; set => _boxes = value; }
+
+        public ObservableCollection<Box> Boxes
+        {
+            get => _boxes;
+            set
+            {
+                _boxes = value;
+                OnPropertyChanged(nameof(Boxes));
+            }
+        }
+
         public Customer Customer { get => _customer; set => _customer = value; }
         public string OrderStatus
         {
@@ -29,7 +38,17 @@ namespace SecondTrial.Model
                 OnPropertyChanged(nameof(OrderStatus));
             } 
         }
-        public string OrderNumber { get => _orderNumber; set => _orderNumber = value; }
+
+        public string OrderNumber
+        {
+            get => _orderNumber;
+            set
+            {
+                _orderNumber = value;
+                OnPropertyChanged(nameof(OrderNumber))
+                    ;
+            } 
+        }
         public ObservableCollection<DateTimeOffset> OrderDates { get => _orderDates; set => _orderDates = value; }
         
         

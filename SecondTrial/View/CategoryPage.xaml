@@ -25,9 +25,13 @@
                ManipulationMode="Scale" Stretch="UniformToFill"/>
         <Rectangle Grid.RowSpan="4" Grid.Column="1" Grid.Row="0"  Fill="#b3ffffff" ManipulationMode="Scale"/>
 
-        <Image Grid.Row="0" Source="../Assets/logo.png" Grid.Column="1" HorizontalAlignment="Center" />
+        <Button  Background="{x:Null}" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left"   Click="Button_Click" >
+            <Image Source="../Assets/arrow_left-512.png" Height="65" VerticalAlignment="Top"  />
+        </Button>
 
-        <ListView ItemsSource="{Binding Categories,Mode=TwoWay}" SelectedItem="{Binding SelectedCategory,Mode=TwoWay}"  Grid.Column="1" HorizontalAlignment="Stretch" Grid.Row="2" FontFamily="Modern Serif">
+        <Image Grid.Row="0" Source="../Assets/logo.png" Grid.Column="1" HorizontalAlignment="Center" />
+        <TextBlock Text="Choose Category" Grid.Column="1" Grid.Row="1" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Modern Serif"></TextBlock>
+        <ListView ItemsSource="{Binding Categories,Mode=TwoWay}" SelectedItem="{Binding SelectedCategory,Mode=TwoWay}"  Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Row="2" FontFamily="Modern Serif">
            <ListView.ItemContainerStyle>
                <Style TargetType="ListViewItem">
                    <Setter Property="FontFamily" Value ="Modern Serif" ></Setter>
@@ -37,7 +41,12 @@
             </ListView.ItemContainerStyle>
             
             </ListView>
-        
+        <FlipView Grid.Column="1" Grid.Row="3" FlowDirection="RightToLeft" Name="categoriesFlipView" >
+            <Image Source="../Assets/GEEK.png" Stretch="Uniform"></Image>
+            <Image Source="../Assets/era.png" Stretch="Uniform"></Image>
+            <Image Source="../Assets/health.png" Stretch="Uniform"></Image>
+            <Image Source="../Assets/beauty.png" Stretch="Uniform"></Image>
+        </FlipView>
 
     </Grid>
 </Page>

@@ -8,14 +8,79 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock HorizontalAlignment="Left" Height="75" Margin="105,105,0,0" Text="Order Details: " TextWrapping="Wrap" VerticalAlignment="Top" Width="360" FontSize ="40"/>
-        <StackPanel>
-            <TextBlock Text="{Binding _order.Customer.PaymentDetails.CardName}"></TextBlock>
-            <TextBlock Text=""></TextBlock>
-            <TextBlock Text=""></TextBlock>
-            <TextBlock Text=""></TextBlock>
-        </StackPanel>
 
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.2*"/>
+            
+            <RowDefinition Height="*"/>
 
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="0.25*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="0.25*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <Image Source="../Assets/back.jpg" Grid.ColumnSpan="5" Grid.Column="0" Grid.Row="0" Grid.RowSpan="12" FlowDirection="RightToLeft"
+               ManipulationMode="Scale" Stretch="UniformToFill"/>
+        <Rectangle Grid.RowSpan="12" Grid.Column="1" Grid.ColumnSpan="3"  Grid.Row="0"  Fill="#b3ffffff" ManipulationMode="Scale" Height="1000" VerticalAlignment="Bottom"/>
+        <Image Grid.Row="0" Source="../Assets/logo.png" Grid.Column="2" HorizontalAlignment="Center"  VerticalAlignment="Bottom" />
+        <TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding CurrentDateTimeOffset}" HorizontalAlignment ="Center" VerticalAlignment ="Center" ></TextBlock>
+        <RichTextBlock Grid.Row ="2" Grid.Column="2" Grid.RowSpan="2" >
+            <Paragraph FontFamily="Modern Serif" >
+                Hello,</Paragraph>
+            <Paragraph FontFamily="Modern Serif"></Paragraph>
+            <Paragraph FontFamily="Modern Serif">Thank you for your order! 
+                We hope you enjoyed shopping with us. Your order is being processed and we'll let you know when it's ready for shipping.
+            </Paragraph>
+            <Paragraph></Paragraph>
+            <Paragraph FontFamily="Modern Serif">If you have any questions, our     
+                <Bold FontFamily="Modern Serif">Customer Service </Bold>  is happy to assist you.
+            </Paragraph>
+            <Paragraph></Paragraph>
+            <Paragraph FontFamily="Modern Serif">Have a lovely day!</Paragraph>
+            <Paragraph FontFamily="Modern Serif">Pandora's Box</Paragraph>
+        </RichTextBlock>
+        <Image Source="../Assets/dribbble_gift.gif"  Grid.Row="4" Grid.Column="2" Grid.RowSpan="2"></Image>
+        <Button Grid.Row="1" Grid.Column="1"  Background="{x:Null}" HorizontalAlignment="Center" Foreground="{x:Null}" Click="Button_Click" >
+            <Image Source="../Assets/arrow_left-512.png" HorizontalAlignment="Left" Width="45"  />
+        </Button>
+        <ListView ItemsSource="{Binding Order.Boxes,Mode =TwoWay}"  Grid.Column="2"  HorizontalAlignment="Center" Grid.RowSpan="2" Grid.Row="7" VerticalAlignment="Center">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation ="Horizontal">
+                        <TextBlock Text="{Binding MyInformationAboutBoxes.Name}" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"></TextBlock>
+                        <TextBlock Text="x" Margin="10,0,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"></TextBlock>
+                        <TextBlock Text="{Binding NumberofSubscriptionMonths}" Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"></TextBlock>
+                        <TextBlock Text="-" Margin="10,0,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"></TextBlock>
+                        <TextBlock Text="{Binding MyInformationAboutBoxes.Price}" Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"></TextBlock>
+                        <TextBlock Text="€" Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"></TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            </ListView>
+       
+        <StackPanel Grid.Row="10" Grid.RowSpan="2"  Grid.Column="2" HorizontalAlignment ="Center">
+        
+            <TextBlock Text="Shipping Address" ></TextBlock>
+            <TextBlock Text ="{Binding Order.Customer.Name,Mode =TwoWay}" HorizontalAlignment ="Center"></TextBlock>
+            <TextBlock Text ="{Binding Order.Customer.Address,Mode =TwoWay}" HorizontalAlignment ="Center"></TextBlock>
+            <TextBlock Text ="{Binding Order.Customer.City,Mode =TwoWay}" HorizontalAlignment ="Center"></TextBlock>
+            <TextBlock Text ="{Binding Order.Customer.Country,Mode =TwoWay}" HorizontalAlignment ="Center"></TextBlock>
+            </StackPanel>
+            
+        
     </Grid>
 </Page>

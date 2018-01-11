@@ -107,8 +107,14 @@ namespace SecondTrial.ViewModel
             set => _currentTime = value;
         }
 
+        public int ShippingPrice { get; set; }
+        public double TotalPriceWithShipping { get; set; }
+
+
         public OrderVm()
         {
+            ShippingPrice = 7;
+
             _serialize = new Serialization();
 
             NewOrder = new Order();
@@ -177,7 +183,10 @@ namespace SecondTrial.ViewModel
                         TotalPrice = TotalPrice + newPrice;
                     }
                 }
+
             }
+
+            TotalPriceWithShipping = TotalPrice + ShippingPrice;
 
         }
 
@@ -198,45 +207,7 @@ namespace SecondTrial.ViewModel
             await _serialize.SaveOrders(MyExistingOrders);
         }
 
-        public void Buy()
-        {
-           CurrentTime = DateTimeOffset.Now;
-
-            NewOrder.Customer = Customer;
-            NewOrder.Boxes = MyNewOrders;
-            NewOrder.OrderStatus = "Waiting for shipping";
-            NewOrder.OrderNumber = Convert.ToString((MyExistingOrders.Count)+1);
-
-            foreach (var box in NewOrder.Boxes)
-            {
-                if (box.CheckSubscription == true)
-                {
-                    if (box.NumberofSubscriptionMonths == 3)
-                    {
-                        NewOrder.OrderDates.Add(CurrentTime);
-                        for (int i = 1; i < 3; i++)
-                        {
-                            NewOrder.OrderDates.Add(CurrentTime.AddMonths(i));
-                        }
-                    }
-                    else
-                    {
-                        NewOrder.OrderDates.Add(CurrentTime);
-                        for (int i = 1; i < 6; i++)
-                        {
-                            NewOrder.OrderDates.Add(CurrentTime.AddMonths(i));
-                        }
-                    }
-                }
-                else
-                {
-                    NewOrder.OrderDates.Add(CurrentTime);
-                }
-            }
-
-            MyExistingOrders.Add(NewOrder);
-            
-        }
+        
 
         public void GoToCustomerPage()
         {
